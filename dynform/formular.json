@@ -1,3 +1,18 @@
 ﻿{
-
+  "meno": {
+    "label": "Name",
+    "value": "Juri",
+    "type": "text",
+    "validation": {
+      "required": true
+    }
+  },
+  "priezvisko": {
+    "label": "Name",
+    "value": "Juri",
+    "type": "text",
+    "validation": {
+      "required": true
+    }
+  }
 }

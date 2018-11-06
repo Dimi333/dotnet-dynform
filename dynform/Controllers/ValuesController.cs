@@ -1,45 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace dynform.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("text/plain")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        // GET api/values/config1
+        [HttpGet("config1")]
+        public ActionResult<string> DajConfig1()
         {
-            return new string[] { "value1", "value2" };
+            var file = System.IO.File.ReadAllText("./tabulka.json");
+            return file;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        // GET api/values/config2
+        [HttpGet("config2")]
+        public ActionResult<string> DajConfig2()
         {
-            return "value";
+            var file = System.IO.File.ReadAllText("./formular.json");
+            return file;
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // GET api/values/data
+        [HttpGet("data")]
+        public ActionResult<string> DajData()
         {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return "[[{\"id\":\"meno\",\"hodnota\":\"Jaro\"},{\"id\":\"priezvisko\",\"hodnota\":\"Juriasdf\"}]]";
         }
     }
 }
